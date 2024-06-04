@@ -14,7 +14,7 @@ DOWNLOAD "Online Voting  System Project"
 
 6. Create a database with name voting_system
 
-7. Import votesystem.sql file(given inside the zip package in db file folder)
+7. Copy paste  database.text file in xampp server
 
-8. Run the script 
+8. Run the script "http://localhost/voting-system/index.php"
 
