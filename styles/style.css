@@ -1,0 +1,27 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+font-family: 'Poppins', sans-serif;
+}
+
+.text-violet{
+    color: #390ca3e8;
+}
+.bg-violet{
+    background-color: #402879dc;
+}
+.bg-violet-100{
+    background-color: rgb(237, 231, 252);
+}
+.btn{
+    background-image: linear-gradient(to left,#483d8b,mediumorchid);
+ 
+    border: 0;
+    
+}
+.btn:hover{
+   
+    scale: 1.1;
+   
+}
+
+

@@ -1,0 +1,271 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 15, 2024 at 07:51 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `voting_system`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_registration`
+--
+
+CREATE TABLE `admin_registration` (
+  `admin_id` int(11) NOT NULL,
+  `admin_email` varchar(255) NOT NULL,
+  `admin_password` varchar(255) NOT NULL,
+  `admin_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin_registration`
+--
+
+INSERT INTO `admin_registration` (`admin_id`, `admin_email`, `admin_password`, `admin_name`) VALUES
+(1, 'admin1@example.com', 'password1', 'Admin1'),
+(2, 'admin2@example.com', 'password2', 'Admin2'),
+(3, 'admin3@example.com', 'password3', 'Admin3'),
+(4, 'admin4@example.com', 'password4', 'Admin4'),
+(5, 'admin5@example.com', 'password5', 'Admin5');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `campaign_messages`
+--
+
+CREATE TABLE `campaign_messages` (
+  `message_id` int(11) NOT NULL,
+  `candidate_id` int(11) DEFAULT NULL,
+  `message` text DEFAULT NULL,
+  `post_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `message_title` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `campaign_messages`
+--
+
+INSERT INTO `campaign_messages` (`message_id`, `candidate_id`, `message`, `post_date`, `message_title`, `image`) VALUES
+(33, 19, 'pulated countries with a population of nearly 170 million in an area of 148,460 square kilometres (57,320 sq mi). Bangladesh shares land borders with India to the west, north, and east, and Myanmar[c] to the southeast; to the south, it has a coastline along the Bay of Bengal. It is narrowly separated from Bhutan and Nepal by the Siliguri Corridor and from China by the Indian state of Sikkim in the north. Dhaka, the capital and largest city, is the nation\'s political, financial, and cultural centre. Chittagong, the second-largest city, is the busiest port on the Bay of Bengal. The official language is Bengali.', '2024-02-05 19:29:26', 'new digital bangladesh', 'images/candidate_post/nnnn.jpg'),
+(36, 22, 'Digital Bangladesh is one of the nation\'s dreams, and so special emphasis is given on the application of digital technologies to realise Vision 2021, which we commonly call Digital Bangladesh. By 2021, after 50 years of independence, our goal is to be a middle-income country with peace, prosperity and dignity. The government of Bangladesh implemented a large number of projects relating to digital technologies and a number of these are already underway. National ICT Policy-2009 was developed with a view to achieve middle-income status of the nation by 2021 and developed status by 2041.', '2024-03-15 18:45:55', 'new digital bangladesh', 'images/candidate_post/digital_7.avif');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `candidates`
+--
+
+CREATE TABLE `candidates` (
+  `candidate_id` int(11) NOT NULL,
+  `candidate_name` varchar(255) NOT NULL,
+  `voter_id` int(11) DEFAULT NULL,
+  `election_id` int(11) DEFAULT NULL,
+  `candidate_category` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `candidates`
+--
+
+INSERT INTO `candidates` (`candidate_id`, `candidate_name`, `voter_id`, `election_id`, `candidate_category`) VALUES
+(16, 'tamim iqbal', 1, 23, 'mayor'),
+(18, 'mojahid', 90, 23, 'mayor'),
+(19, 'arif', 8, 24, 'president'),
+(20, 'sakib', 1234, 23, 'mayor'),
+(21, 'riad', 99, 23, 'mayor'),
+(22, 'rahim khan ', 3, 23, 'mayor');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `elections`
+--
+
+CREATE TABLE `elections` (
+  `election_id` int(11) NOT NULL,
+  `election_category` varchar(255) DEFAULT NULL,
+  `num_candidates` int(11) DEFAULT NULL,
+  `starting_date` date DEFAULT NULL,
+  `ending_date` date DEFAULT NULL,
+  `status` varchar(255) NOT NULL,
+  `inserted_by` varchar(255) DEFAULT NULL,
+  `inserted_on` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `elections`
+--
+
+INSERT INTO `elections` (`election_id`, `election_category`, `num_candidates`, `starting_date`, `ending_date`, `status`, `inserted_by`, `inserted_on`) VALUES
+(23, 'mayor', 5, '2024-02-02', '2024-02-05', 'active', 'Admin1', '2024-02-02'),
+(24, 'president', 6, '2024-02-02', '2024-02-05', 'active', 'Admin1', '2024-02-02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `result`
+--
+
+CREATE TABLE `result` (
+  `voter_id` int(11) NOT NULL,
+  `candidate_id` int(11) NOT NULL,
+  `election_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `voter_registration`
+--
+
+CREATE TABLE `voter_registration` (
+  `voter_id` int(11) NOT NULL,
+  `voter_name` varchar(255) NOT NULL,
+  `voter_age` int(11) NOT NULL,
+  `voter_email` varchar(255) NOT NULL,
+  `voter_phone` varchar(15) NOT NULL,
+  `voter_password` varchar(255) NOT NULL,
+  `category` varchar(255) DEFAULT NULL,
+  `photo` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `voter_registration`
+--
+
+INSERT INTO `voter_registration` (`voter_id`, `voter_name`, `voter_age`, `voter_email`, `voter_phone`, `voter_password`, `category`, `photo`) VALUES
+(1, 'tamim iqbal', 28, 'tamim@gmail.com', '2234567', '1234', 'mayor', '7e1f3a8614a35a774c2d92fa9e46a672.jpeg'),
+(3, 'rahim khan ', 30, 'rahim@gmail.com', '2234567', '123456', 'mayor', '7cfe64ea5820a5a6abadcba705f55541.jpeg'),
+(8, 'arif', 15, 'arif@gmail.com', '3232844', '1234', 'president', '50c274bf166c9a4da02263e82ce67194.png'),
+(9, 'Tareq', 19, 'tareq@gmail.com', '32328', '1234', 'general election', '9f5e53c1761656e7d79292d912fa575a.22'),
+(10, 'me mehraj', 14, 'mehraj@gmail.com', '3232844', '1234', 'mayor', 'adb130c0151c9648a0c6c2094926ec05.png'),
+(11, 'hablu', 33, 'hablu@gamil.com', '333333', '1234', 'president', '1a57efd2ecd16f3a381a26feeaf763ef.11'),
+(45, 'hasan', 28, 'hasan@gmail.com', '643213432', '1234', 'mayor', '5d8c276b3a923cb60eb9d8daa233863c.png'),
+(55, 'abul kader', 66, 'abul@gamil.com', '2234567', '1234', 'mayor', '1b7350ed8fc5aa9368cba8815f98b7cc.jpg'),
+(90, 'mojahid', 15, 'mojahid@gmail.com', '4345367', '1234', 'mayor', '03e6c974616c923a4ccef7c4523cb475.jpg'),
+(99, 'riad', 20, 'riad@gmail.com', '32353464', '1234', 'mayor', 'cc3efc96eb7ab3c0d918f51b6e36482a.jpg'),
+(1234, 'sakib', 75, 'sakib@gmail.com', '333333', '12345', 'mayor', '44ecc9d3ce7467b76c926b7e5dc36b1b.jpg');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin_registration`
+--
+ALTER TABLE `admin_registration`
+  ADD PRIMARY KEY (`admin_id`),
+  ADD UNIQUE KEY `admin_email` (`admin_email`),
+  ADD UNIQUE KEY `admin_password` (`admin_password`);
+
+--
+-- Indexes for table `campaign_messages`
+--
+ALTER TABLE `campaign_messages`
+  ADD PRIMARY KEY (`message_id`),
+  ADD KEY `candidate_id` (`candidate_id`);
+
+--
+-- Indexes for table `candidates`
+--
+ALTER TABLE `candidates`
+  ADD PRIMARY KEY (`candidate_id`),
+  ADD KEY `voter_id` (`voter_id`),
+  ADD KEY `election_id` (`election_id`);
+
+--
+-- Indexes for table `elections`
+--
+ALTER TABLE `elections`
+  ADD PRIMARY KEY (`election_id`);
+
+--
+-- Indexes for table `result`
+--
+ALTER TABLE `result`
+  ADD PRIMARY KEY (`voter_id`,`election_id`),
+  ADD KEY `candidate_id` (`candidate_id`),
+  ADD KEY `election_id` (`election_id`);
+
+--
+-- Indexes for table `voter_registration`
+--
+ALTER TABLE `voter_registration`
+  ADD PRIMARY KEY (`voter_id`),
+  ADD UNIQUE KEY `unique_voter_email` (`voter_email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin_registration`
+--
+ALTER TABLE `admin_registration`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `campaign_messages`
+--
+ALTER TABLE `campaign_messages`
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT for table `candidates`
+--
+ALTER TABLE `candidates`
+  MODIFY `candidate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `elections`
+--
+ALTER TABLE `elections`
+  MODIFY `election_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `campaign_messages`
+--
+ALTER TABLE `campaign_messages`
+  ADD CONSTRAINT `campaign_messages_ibfk_1` FOREIGN KEY (`candidate_id`) REFERENCES `candidates` (`candidate_id`);
+
+--
+-- Constraints for table `candidates`
+--
+ALTER TABLE `candidates`
+  ADD CONSTRAINT `candidates_ibfk_1` FOREIGN KEY (`voter_id`) REFERENCES `voter_registration` (`voter_id`),
+  ADD CONSTRAINT `candidates_ibfk_2` FOREIGN KEY (`election_id`) REFERENCES `elections` (`election_id`);
+
+--
+-- Constraints for table `result`
+--
+ALTER TABLE `result`
+  ADD CONSTRAINT `result_ibfk_1` FOREIGN KEY (`candidate_id`) REFERENCES `candidates` (`candidate_id`),
+  ADD CONSTRAINT `result_ibfk_2` FOREIGN KEY (`election_id`) REFERENCES `elections` (`election_id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

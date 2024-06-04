@@ -1,0 +1,114 @@
+.btn-violet {
+    background-image: linear-gradient(to left,#483d8b,mediumorchid);
+   
+      border: 0;
+  }
+  a{
+  text-decoration: none;
+  }
+  .text-violet, a{
+    color: #390ca3e8;
+  }
+ 
+  .bg-violet-100{
+    background-color: rgb(237, 231, 252);
+  }
+  .candidate-profile{
+    background-image: url(images/advertisement.png);
+    background-repeat: no-repeat;
+  }
+
+  /*------------------------------------
+      Member area
+  ------------------------------------*/
+  .sidebar-item.active,
+  .sidebar-item:hover {
+  background-color: rgb(237, 231, 252);
+  border: 1px solid #e6e7e9;
+  border-right: 0;
+  margin-right: -1px;
+  }
+  
+  .sidebar-menu {
+  border-bottom: 1px solid #e6e7e9;
+  border-top: 1px solid #e6e7e9;
+  border-right: 1px solid #e6e7e9;
+  
+  background-color: #f4f4f4;
+  }
+  
+  .sidebar-item {
+  position: relative;
+  display: block;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid transparent;
+  }
+  
+  .sidebar-item.active:hover {
+  background-color: #fff;
+  }
+  
+  .card .icon-big {
+  font-size: 3rem;
+  }
+  
+  .card .icon-big .notif {
+  position: absolute;
+  min-width: 25px;
+  border-radius: 5rem;
+  font-size: 1rem;
+  background: #dc3545;
+  color: #fff;
+  }
+  
+  .card .numbers {
+  text-align: right;
+  }
+  
+  .card .numbers p {
+  font-size: 1rem;
+  margin: 0;
+  }
+  
+  .card .footer {
+  padding: 0;
+  line-height: 30px;
+  }
+  
+  .side-notif {
+  padding-left: 7px;
+  padding-right: 7px;
+  font-size: 0.8rem;
+  border-radius: 5rem;
+  background-color: #dc3545;
+  color: #fff;
+  }
+  .voter_profile{
+  background-image: url(../images/profile_bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  }
+  .statistics li {
+  padding: 0.25rem 0;
+  }
+  
+  .member-item:hover .card {
+  background-color: #f4f4f4;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f4f4f4;
+  }
+  
+  @media (max-width: 767.98px) {
+  
+  .sidebar-item.active,
+  .sidebar-item:hover {
+    border-right: 1px solid #e6e7e9;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
+  }
