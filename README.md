@@ -12,9 +12,9 @@ DOWNLOAD "Online Voting  System Project"
 
 5. Open PHPMyAdmin `http://localhost/phpmyadmin`
 
-6. Create a database with name voting_system
+6. Create a database with name "voting_system"
 
 7. Copy paste  database.text file in xampp server
 
-8. Run the script "http://localhost/voting-system/index.php"
+
 
